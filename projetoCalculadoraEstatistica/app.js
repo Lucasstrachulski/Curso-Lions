@@ -3,7 +3,8 @@ const prompt = promptSync();
 
 import adicionarNumeros from "./adicionar.js";
 import RemoverNumero from "./remover.js";
-import mediaNumeros from "./media.js"
+import mediaNumeros from "./media.js";
+import medianaNumeros from "./mediana.js";
 
 let continuar = true;
 export const lista = [];
@@ -31,9 +32,20 @@ while (continuar) {
 
       case 3:
         mediaNumeros()
-        
+        break;
+        case 4:
+          medianaNumeros()
+          break;
+          case 0:
+            console.log("Saindo... até logo!");
+            continuar =  false;
+            break;
+            
+
 
     default:
+      console.log("Operação invalida!");
+      
       break;
   }
 }
