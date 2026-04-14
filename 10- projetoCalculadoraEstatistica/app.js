@@ -30,22 +30,22 @@ while (continuar) {
       console.log(lista);
       break;
 
-      case 3:
-        mediaNumeros()
-        break;
-        case 4:
-          medianaNumeros()
-          break;
-          case 0:
-            console.log("Saindo... até logo!");
-            continuar =  false;
-            break;
-            
+    case 3:
+      mediaNumeros();
+      break;
 
+    case 4:
+      medianaNumeros();
+      break;
+
+    case 0:
+      console.log("Saindo... até logo!");
+      continuar = false;
+      break;
 
     default:
       console.log("Operação invalida!");
-      
+
       break;
   }
 }
