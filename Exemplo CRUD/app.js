@@ -17,7 +17,7 @@ function mainMenu() {
   console.log("5- Sair");
 }
 
-while (opcao) {
+while (opcao !=5 ) {
   mainMenu();
   opcao = parseFloat(prompt("Digite uma opção! R: "));
 
@@ -30,6 +30,8 @@ while (opcao) {
     case 2:
       //Operação CREATE
       adicionarContato(contatos);
+      let nome = prompt("Nome:")
+      let email = prompt("Email:")
       break;
 
       case 3: 
