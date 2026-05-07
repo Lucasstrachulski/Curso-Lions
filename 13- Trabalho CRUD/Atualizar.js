@@ -1,4 +1,4 @@
-import promptSync from "prompt-sync";
+ import promptSync from "prompt-sync";
 const prompt = promptSync();
 
 import baralhos from "./baralho.js";
