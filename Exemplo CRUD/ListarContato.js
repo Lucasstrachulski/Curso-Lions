@@ -1,15 +1,9 @@
 function listarContato(contatos){
     if(contatos.length === 0 ) {
-        console.log("Nenhu, contato cadastrado!");
-        return
+        console.log("Nenhum, contato cadastrado!");
+       
     }
-
-    contatos.forEach(contato => {
-        console.log(`\nId: ${contato.id}`);
-        console.log(`Nome: ${contato.nome}`);
-        console.log(`Email: ${contato.email}`);
-        console.log(`Telefones: ${contato.telefones.join(" | ")}`);
-    })
+    return contatos
 }
 
 export default listarContato
