@@ -23,7 +23,7 @@ function adicionarContato(contatos, novoContato) {
         novoContato.is = 1
     }
     contatos.push(novoContato)
-    return
+    return novoContato
 }
 
 export default adicionarContato

@@ -3,7 +3,7 @@ function atualizarContato(contatos, id, novosDados) {
 
   if (indice === -1) {
     console.log("Erro: Contato não encontrado!");
-    return false;
+    return -1;
   }
 
   //Validação de email na atualização
@@ -19,7 +19,7 @@ function atualizarContato(contatos, id, novosDados) {
     }
     if (emailEmUso) {
       console.log("Erro: O novo email ja está em uso por outro usuário!");
-      return false;
+      return;
     }
   }
 
@@ -30,5 +30,7 @@ function atualizarContato(contatos, id, novosDados) {
   if (novosDados.telefones.length > 0) {
     contatos[indice].telefones = novosDados.telefones;
   }
-  return true;
+  return novosDados;
 }
+
+export default atualizarContato
