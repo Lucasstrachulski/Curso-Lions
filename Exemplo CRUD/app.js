@@ -6,7 +6,7 @@ import contatos from "./Dados.js";
 import Dados from "./Dados.js";
 import listarContato from "./ListarContato.js";
 import Listar from "./ListarContato.js";
-//import Remover from "./RemovendoContato.js";
+import RemovendoContato from "./RemovendoContato.js";
 
 import express from "express";
 
@@ -34,9 +34,6 @@ router.post("/contatos", (req, resp) => {
   });
 });
 
-router.listen(porta, () => {
-  console.log("Servidor rodando na porta " + porta + "!");
-});
 
 //Read (GET)
 router.get("/contatos", (req, resp) => {
@@ -60,6 +57,25 @@ router.put("/contatos/:id", (req, resp) => {
     resp.status(201).send({ mensagem: "Contato atualizado!" });
     ContatoAtualizado = resultado;
   }
+});
+
+router.delete("/contatos/:id", (req,resp) => {
+  const id = req.params.id;
+
+  const resultado = RemovendoContato(contatos, id);
+  const data = resultado.data;
+  const error = resultado.error;
+
+  if(error){
+    return resp.status(404).send({message: error});
+
+  }
+
+  resp.status(200).send({message: "Id removido!", id: data})
+})
+
+router.listen(porta, () => {
+  console.log("Servidor rodando na porta " + porta + "!");
 });
 
 /*
