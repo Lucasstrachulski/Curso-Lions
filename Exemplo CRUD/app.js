@@ -36,7 +36,7 @@ router.post("/contatos", (req, resp) => {
 
 
 //Read (GET)
-router.get("/contatos", (req, resp) => {
+router.get("/contatos", (req, resp) => {,
   resp.status(200).send(listarContato(contatos));
 });
 
