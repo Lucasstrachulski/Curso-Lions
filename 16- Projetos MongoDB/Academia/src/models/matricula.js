@@ -6,16 +6,49 @@ const matriculas = new mongoose.Schema({
     requerid: [true, "O nome é obrigatório!"],
   },
 
-  Idade:{
+  Idade: {
     type: Number,
-    requerid: [true, "A idade é obrigatória!"]
+    requerid: [true, "A idade é obrigatória!"],
   },
-  Modalidade:{
+  Modalidade: {
     type: String,
     requerid: [true, "A modalidade é obrigatória!"],
-    enum:{
-        values:[Musculação, Funcional, Dança],
-        Message:"A modalidade deve ser Musculação, Funcional ou Dança!"
-    }
-  }
+    enum: {
+      values: ["Musculação", "Funcional", "Dança"],
+      Message: "A modalidade deve ser Musculação, Funcional ou Dança!",
+    },
+  },
+  plano: {
+    type: String,
+    requerid: [true, "A modalidade é obrigatória!"],
+    enum: {
+      values: ["Mensal", "Trimestral", "Semestral"],
+      Message: "O plano deve ser Mensal, Trimestral ou Semestral!",
+    },
+
+    DataMatricula: {
+      type: String,
+      requerid: [true, "A data de matrícula é obrigatória!"],
+    },
+
+    ValorMensal: {
+      type: Number,
+    },
+
+    ValorTotal: {
+      type: Number,
+    },
+
+    status: {
+      type: String,
+      default: "Ativa",
+      enum: {
+        values: ["Ativa", "Pausada", "Cancelada"],
+      },
+    },
+  },
 });
+
+const Matricula = mongoose.model("Matricula", matriculas);
+
+export default Matricula
