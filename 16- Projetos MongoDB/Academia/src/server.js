@@ -71,8 +71,23 @@ app.get("/Matricula", async (req,res) => {
     const TodasMatriculas = await Matricula.find();
     res.status(200).json({mensagem:"Todas as matriculas foram listadas!", Matricula:TodasMatriculas})
   } catch (error) {
-    res.status(400).json({mensagem:`Erro ao listar as Matriculas ${erro.message}`})
+    res.status(400).json({mensagem
+      :`Erro ao listar as Matriculas ${erro.message}`})
     
+  }
+})
+
+app.get("/Matricula/busca", async (req,res) => {
+  try {
+    const nome = req.params.id;
+    const {status} = req.body;
+const Matriculas = await Matricula.find({
+  Modalidade: { $regex: nome, $options: "i" },
+})
+
+res.status(200).json({mensagem:"Busca efetuada com sucesso!"})
+  } catch (erro) {
+    res.status(404).json({erro:`Erro ${erro.message}`})
   }
 })
 
