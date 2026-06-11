@@ -66,6 +66,16 @@ app.post("/Matricula", async (req, res) => {
   }
 });
 
+app.get("/Matricula", async (req,res) => {
+  try {
+    const TodasMatriculas = await Matricula.find();
+    res.status(200).json({mensagem:"Todas as matriculas foram listadas!"})
+  } catch (error) {
+    res.status(400).json({mensagem:`Erro ao listar as Matriculas ${erro.message}`})
+    
+  }
+})
+
 app.listen(porta, () => {
   console.log(`Conectado com a porta ${porta} com sucesso!`);
 });
