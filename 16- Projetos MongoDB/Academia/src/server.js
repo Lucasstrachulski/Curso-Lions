@@ -6,7 +6,6 @@ import dotenv from "dotenv";
 import CalcularValor from "./utils/CalculoValorTotal.js";
 import CalcularValorMensal from "./utils/CalculoValorMensal.js";
 
-
 dotenv.config({ path: "../.env" });
 const app = express();
 const porta = process.env.porta;
@@ -20,12 +19,12 @@ app.get("/", (req, res) => {
 
 app.post("/Matricula", async (req, res) => {
   try {
-    const {NomeAluno,Idade,Modalidade,plano,DataMatricula,status,} = req.body;
+    const { NomeAluno, Idade, Modalidade, plano, DataMatricula, status } =
+      req.body;
 
     const ValorTotal = CalcularValor(plano, Modalidade);
-    const ValorMensal = CalcularValorMensal(plano, Modalidade)
+    const ValorMensal = CalcularValorMensal(plano, Modalidade);
 
-    
     let valor = 0;
     switch (ValorMensal) {
       case "Musculação":
@@ -42,8 +41,6 @@ app.post("/Matricula", async (req, res) => {
       default:
         break;
     }
-    
-
 
     const NovaMatricula = new Matricula({
       NomeAluno,
@@ -55,41 +52,68 @@ app.post("/Matricula", async (req, res) => {
       ValorTotal,
       status,
     });
-    
-    await NovaMatricula.save()
 
-    res.status(201).json({mensagem: "Matricula cadastrada",matriculas: NovaMatricula});
+    await NovaMatricula.save();
 
+    res
+      .status(201)
+      .json({ mensagem: "Matricula cadastrada", matriculas: NovaMatricula });
   } catch (erro) {
-
-    res.status(400).json({ mensagem: `Erro ao cadastrar a Matricula: ${erro.message}` });
+    res
+      .status(400)
+      .json({ mensagem: `Erro ao cadastrar a Matricula: ${erro.message}` });
   }
 });
 
-app.get("/Matricula", async (req,res) => {
+app.get("/Matricula", async (req, res) => {
   try {
     const TodasMatriculas = await Matricula.find();
-    res.status(200).json({mensagem:"Todas as matriculas foram listadas!", Matricula:TodasMatriculas})
+    res
+      .status(200)
+      .json({
+        mensagem: "Todas as matriculas foram listadas!",
+        Matricula: TodasMatriculas,
+      });
   } catch (error) {
-    res.status(400).json({mensagem
-      :`Erro ao listar as Matriculas ${erro.message}`})
-    
+    res
+      .status(400)
+      .json({ mensagem: `Erro ao listar as Matriculas ${erro.message}` });
   }
-})
+});
 
-app.get("/Matricula/busca", async (req,res) => {
+app.get("/Matricula/busca", async (req, res) => {
   try {
     const nome = req.params.id;
-    const {status} = req.body;
-const Matriculas = await Matricula.find({
-  Modalidade: { $regex: nome, $options: "i" },
-})
+    const { status } = req.body;
+    const Matriculas = await Matricula.find({
+      Modalidade: { $regex: nome, $options: "i" },
+    });
 
-res.status(200).json({mensagem:"Busca efetuada com sucesso!"})
+    res.status(200).json({ mensagem: "Busca efetuada com sucesso!" });
   } catch (erro) {
-    res.status(404).json({erro:`Erro ${erro.message}`})
+    res.status(404).json({ erro: `Erro ${erro.message}` });
   }
-})
+});
+
+app.patch("/Matricula/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { status } = req.body;
+
+    const MatriculaAtualizada = await Matricula.findByIdAndDelete(
+      id,
+      { status: status },
+      { runValidators: true, new: true }
+    );
+
+    if (!MatriculaAtualizada) {
+      res.status(404).json({ mensagem: "Matricula não encontrada!" });
+    }
+    res.status(200).json({ mensagem: "Matricula Atualizada!" });
+  } catch (erro) {
+    res.status(500).json({ erro: `Erro: ${erro.message}` });
+  }
+});
 
 app.listen(porta, () => {
   console.log(`Conectado com a porta ${porta} com sucesso!`);
