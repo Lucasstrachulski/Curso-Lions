@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brechó - Roupas com História</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>✨ Brechó</h1>
+                <span class="tagline">Roupas com História</span>
+            </div>
+            <nav class="nav">
+                <a href="#catalogo" class="nav-link active">Catálogo</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Encontre peças únicas com história</h2>
+            <p>Roupas selecionadas com carinho, prontas para ganhar uma nova vida</p>
+            <a href="#catalogo" class="btn btn-primary">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <main class="main">
+        <section id="catalogo" class="section">
+            <div class="container">
+                <h2 class="section-title">Nossas Peças Disponíveis</h2>
+                
+                <div class="filtros">
+                    <div class="filtro-grupo">
+                        <label>Categoria:</label>
+                        <select id="filtro-categoria">
+                            <option value="todos">Todas</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="infantil">Infantil</option>
+                            <option value="acessorios">Acessórios</option>
+                            <option value="calcados">Calçados</option>
+                        </select>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label>Tamanho:</label>
+                        <select id="filtro-tamanho">
+                            <option value="todos">Todos</option>
+                            <option value="PP">PP</option>
+                            <option value="P">P</option>
+                            <option value="M">M</option>
+                            <option value="G">G</option>
+                            <option value="GG">GG</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                        </select>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label>Buscar:</label>
+                        <input type="text" id="busca" placeholder="Nome da peça...">
+                    </div>
+                </div>
+
+                <div id="lista-produtos" class="produtos-grid"></div>
+                
+                <div id="sem-produtos" class="sem-produtos" style="display: none;">
+                    <p>Nenhuma peça encontrada com esses filtros.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="section section-sobre">
+            <div class="container">
+                <h2 class="section-title">Sobre o Brechó</h2>
+                <div class="sobre-content">
+                    <div class="sobre-texto">
+                        <p>🎵 Acreditamos que cada peça de roupa tem uma história para contar! Nosso brechó é um espaço acolhedor onde roupas de qualidade encontram novos donos.</p>
+                        <p>Todas as nossas peças passam por rigorosa seleção e higienização para garantir a melhor qualidade.</p>
+                        <p>Venha nos visitar e encontre peças únicas que não encontrar em lojas convencionais!</p>
+                    </div>
+                    <div class="sobre-valores">
+                        <div class="valor-item">
+                            <span class="valor-icon">♻️</span>
+                            <h3>Sustentabilidade</h3>
+                            <p>Roupas ganham uma nova vida</p>
+                        </div>
+                        <div class="valor-item">
+                            <span class="valor-icon">💰</span>
+                            <h3>Preço Justo</h3>
+                            <p>Qualidade acessível</p>
+                        </div>
+                        <div class="valor-item">
+                            <span class="valor-icon">✨</span>
+                            <h3>Qualidade</h3>
+                            <p>Peças selecionadas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section section-contato">
+            <div class="container">
+                <h2 class="section-title">Como nos encontrar</h2>
+                <div class="contato-grid">
+                    <div class="contato-card">
+                        <div class="contato-icon">📍</div>
+                        <h3>Localização</h3>
+                        <p>Rua das Flores, 123 - Centro</p>
+                        <p>São Paulo - SP</p>
+                        <p>CEP: 01234-567</p>
+                    </div>
+                    <div class="contato-card">
+                        <div class="contato-icon">🕐</div>
+                        <h3>Horário de Funcionamento</h3>
+                        <p>Segunda a Sexta: 9h às 18h</p>
+                        <p>Sábado: 9h às 14h</p>
+                        <p>Domingo: Fechado</p>
+                    </div>
+                    <div class="contato-card whatsapp-card">
+                        <div class="contato-icon">💬</div>
+                        <h3>WhatsApp</h3>
+                        <p> tire suas dúvidas, encomende ou agende sua visita!</p>
+                        <a href="https://wa.me/5511999999999" target="_blank" class="btn btn-whatsapp">
+                            Falar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mapa-placeholder">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975944787!2d-46.6388!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzgnMTkuNiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-float">
+        💬
+    </a>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>✨ Brechó</h3>
+                    <p>Roupas com História</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#catalogo">Catálogo</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#contato">Contato</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Brechó - Roupas com História. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

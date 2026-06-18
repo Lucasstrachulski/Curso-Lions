@@ -1,0 +1,13 @@
+{
+  "name": "17-projeto-teste-brecho",
+  "version": "1.0.0",
+  "description": "Projeto de um Brechó online com frontend completo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["brecho", "roupas", "frontend"],
+  "author": "",
+  "license": "ISC"
+}
