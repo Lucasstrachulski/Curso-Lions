@@ -1,18 +1,20 @@
-import express from "express";
-import Agendamento from "./models/agendamento.js";
+
 import conectarDB from "./config/db.js";
 import dotenv from "dotenv";
+import app from "./app.js"
 
 dotenv.config({ path: "../.env" });
-const app = express();
 const PORT = process.env.PORT;
+
+try {
 conectarDB();
 
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.json({ mensagem: "API do Petshop está no ar!" });
+app.listen(PORT, () => {
+  console.log(`Conectado com a porta ${PORT} com sucesso`);
 });
+} catch(error) {
+  console.log(`Erro ao iniciar a aplicação: ${error.menssage}`);
+}
 
 /*app.post("/agendamentos", async (req, res) => {
   try {
