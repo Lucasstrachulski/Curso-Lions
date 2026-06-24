@@ -1,6 +1,6 @@
 import express from "express";
 import Agendamento from "./models/agendamento.js";
-import conectarDB from "./db.js";
+import conectarDB from "./config/db.js";
 import dotenv from "dotenv";
 
 dotenv.config({ path: "../.env" });
@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.json({ mensagem: "API do Petshop está no ar!" });
 });
 
-app.post("/agendamentos", async (req, res) => {
+/*app.post("/agendamentos", async (req, res) => {
   try {
     const { nomePet, especie, nomeDono, telefoneDono, servico, data } =
       req.body;
@@ -95,6 +95,7 @@ app.post("/agendamentos", async (req, res) => {
       .json({ mensagem: `Erro ao criar o agendamento: ${erro.message}` });
   }
 });
+*/
 
 app.get("/agendamentos", async (req, res) => {
   try {
